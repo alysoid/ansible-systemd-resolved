@@ -13,4 +13,4 @@ Manage system DNS resolver via systemd using [systemd-resolved](https://man.arch
 
 Manage [resolved.conf.d - Network Name Resolution configuration files](https://man.archlinux.org/man/resolved.conf.5.en).
 
-Configuration files will have the .conf extension and will be placed in the configuration snippets directory `/etc/systemd/network`.
+Configuration files will have the .conf extension and will be placed in the configuration snippets directory `/etc/systemd/resolved.conf.d`.
