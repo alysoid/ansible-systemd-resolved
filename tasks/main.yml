@@ -1,6 +1,6 @@
 ---
 - name: Symlink resolv.conf to systemd DNS stub file
-  file:
+  ansible.builtin.file:
     src: /run/systemd/resolve/stub-resolv.conf
     path: /etc/resolv.conf
     state: link
@@ -8,20 +8,20 @@
   notify: Restart systemd-resolved
 
 - name: Create resolved.conf.d directory
-  file:
+  ansible.builtin.file:
     path: /etc/systemd/resolved.conf.d
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: Check existing configuration files
-  find:
+  ansible.builtin.find:
     paths: /etc/systemd/resolved.conf.d
-    patterns: '*.conf'
+    patterns: "*.conf"
   when: resolve_cleanup
   register: existing_config
 
 - name: Remove existing configuration files
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
   loop: "{{ existing_config.files }}"
@@ -29,10 +29,10 @@
   notify: Restart systemd-resolved
 
 - name: Generate name resolution configuration files
-  template:
+  ansible.builtin.template:
     src: systemd_resolved_config.j2
     dest: "/etc/systemd/resolved.conf.d/{{ item.key }}.conf"
     owner: root
-    mode: '0644'
+    mode: "0644"
   loop: "{{ systemd_resolved | dict2items }}"
   notify: Restart systemd-resolved
