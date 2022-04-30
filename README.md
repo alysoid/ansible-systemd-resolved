@@ -4,10 +4,10 @@ Manage system DNS resolver via systemd using [systemd-resolved](https://man.arch
 
 ## Role default variables
 
-| Variable           | Default | Info
-| ------------------ | ------- | ------------------
-| `systemd_resolved` | `{}`    | Set configuration files that control local DNS and LLMNR name resolution.
-| `resolve_cleanup`  | `no`    | Remove existing configuration files: `/etc/systemd/resolved.conf.d/*.conf`.
+| Variable           | Default | Info                                                                        |
+| ------------------ | ------- | --------------------------------------------------------------------------- |
+| `systemd_resolved` | `[]`    | Set configuration files that control local DNS and LLMNR name resolution.   |
+| `resolve_cleanup`  | `no`    | Remove existing configuration files: `/etc/systemd/resolved.conf.d/*.conf`. |
 
 ### `systemd_resolved`
 

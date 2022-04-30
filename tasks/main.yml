@@ -31,8 +31,11 @@
 - name: Generate name resolution configuration files
   ansible.builtin.template:
     src: systemd_resolved_config.j2
-    dest: "/etc/systemd/resolved.conf.d/{{ item.key }}.conf"
+    dest: "/etc/systemd/resolved.conf.d/{{ item.name }}.conf"
     owner: root
+    group: systemd-resolve
     mode: "0644"
-  loop: "{{ systemd_resolved | dict2items }}"
+  vars:
+    - current_item: "{{ item.options }}"
+  loop: "{{ systemd_resolved }}"
   notify: Restart systemd-resolved
