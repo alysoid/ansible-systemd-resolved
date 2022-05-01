@@ -1,4 +1,4 @@
-# [Catena](https://github.com/alysoid/catena) - Resolve Ansible Role
+# [Catena](https://github.com/alysoid/catena) Ansible Role: systemd-resolved
 
 Manage system DNS resolver via systemd using [systemd-resolved](https://man.archlinux.org/man/systemd-resolved.8.en), a system service that provides network name resolution to local applications. It implements a caching and validating DNS/DNSSEC stub resolver, as well as an LLMNR and MulticastDNS resolver and responder.
 
