@@ -17,7 +17,7 @@
   ansible.builtin.find:
     paths: /etc/systemd/resolved.conf.d
     patterns: "*.conf"
-  when: resolve_cleanup
+  when: catena_resolved_cleanup
   register: existing_config
 
 - name: Remove existing configuration files
@@ -25,17 +25,17 @@
     path: "{{ item.path }}"
     state: absent
   loop: "{{ existing_config.files }}"
-  when: resolve_cleanup
+  when: catena_resolved_cleanup
   notify: Restart systemd-resolved
 
 - name: Generate name resolution configuration files
   ansible.builtin.template:
-    src: systemd_resolved_config.j2
+    src: resolved_config.j2
     dest: "/etc/systemd/resolved.conf.d/{{ item.name }}.conf"
     owner: root
     group: systemd-resolve
     mode: "0644"
   vars:
     - current_item: "{{ item.options }}"
-  loop: "{{ systemd_resolved }}"
+  loop: "{{ catena_resolved }}"
   notify: Restart systemd-resolved

@@ -4,12 +4,12 @@ Manage system DNS resolver via systemd using [systemd-resolved](https://man.arch
 
 ## Role variables
 
-| Variable           | Default | Info                                                                        |
-| ------------------ | ------- | --------------------------------------------------------------------------- |
-| `systemd_resolved` | `[]`    | Set configuration files that control local DNS and LLMNR name resolution.   |
-| `resolve_cleanup`  | `no`    | Remove existing configuration files: `/etc/systemd/resolved.conf.d/*.conf`. |
+| Variable                  | Default | Info                                                                        |
+| ------------------------- | ------- | --------------------------------------------------------------------------- |
+| `catena_resolved`         | `[]`    | Set configuration files that control local DNS and LLMNR name resolution.   |
+| `catena_resolved_cleanup` | `no`    | Remove existing configuration files: `/etc/systemd/resolved.conf.d/*.conf`. |
 
-### `systemd_resolved`
+### `catena_resolved`
 
 Manage [resolved.conf.d - Network Name Resolution configuration files](https://man.archlinux.org/man/resolved.conf.5.en).
 
@@ -17,10 +17,10 @@ Configuration files will have the .conf extension and will be placed in the conf
 
 ```yaml
 # Defaults
-systemd_resolved: []
+catena_resolved: []
 
 # Example
-systemd_resolved:
+catena_resolved:
   # /etc/systemd/resolved.conf.d/dns_server.conf
   - name: dns_server
     options:

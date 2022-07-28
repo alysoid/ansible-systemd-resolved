@@ -1,6 +1,6 @@
 ---
 # Control local DNS and LLMNR name resolution
-systemd_resolved: []
+catena_resolved: []
 
 # Remove all existing configuration files when true
-resolve_cleanup: false
+catena_resolved_cleanup: false
